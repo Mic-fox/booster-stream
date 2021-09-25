@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom"
+import LandingPage from "./Pages/LandingPage";
 
 const ROUTE_LINKS = {
     Landing: "landing"
@@ -15,6 +16,7 @@ const StreamRouter = () => {
     <Route
       exact
       path={ROUTE_LINKS.Landing}
+      component={LandingPage}
     />
   </Switch>
 }

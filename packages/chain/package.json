@@ -1,6 +1,7 @@
 {
   "name": "@booster-stream/chain",
   "version": "0.1.0",
+  "private": false,
   "dependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",

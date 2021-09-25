@@ -1,8 +1,8 @@
 import React from "react";
 import LoginModule from "../Modules/LoginModule";
 
-const Landing = () => {
+const LandingPage = () => {
     return <LoginModule/>
 }
 
-export default Landing
+export default LandingPage
