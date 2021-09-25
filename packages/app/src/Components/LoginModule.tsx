@@ -1,8 +1,6 @@
 import React from "react";
 import { useMoralis } from "react-moralis";
 
-
-
 const LoginModule = () => {
     const { authenticate, isAuthenticated, user  } = useMoralis();
     if (!isAuthenticated)  {

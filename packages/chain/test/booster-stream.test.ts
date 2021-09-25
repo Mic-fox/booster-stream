@@ -1,33 +1,33 @@
-import { Contract } from "@ethersproject/contracts";
-import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
-import { expect, assert } from "chai";
-import { ethers } from "hardhat";
-import { tokenSettings } from "./test.settings";
+import { Contract } from "@ethersproject/contracts"
+import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers"
+import { expect, assert } from "chai"
+import { ethers } from "hardhat"
+import { tokenSettings } from "./test.settings"
 
 describe("Greeter", () => {
-  let investor: SignerWithAddress;
-  let bundleOwner: SignerWithAddress;
-  let user: SignerWithAddress;
+  let investor: SignerWithAddress
+  let bundleOwner: SignerWithAddress
+  let user: SignerWithAddress
 
-  let boosterStreamInstance: Contract;
-  let mockDaiInstance: Contract;
+  let boosterStreamInstance: Contract
+  let mockDaiInstance: Contract
 
   beforeEach(async () => {
-    const accounts = await ethers.getSigners();
+    const accounts = await ethers.getSigners()
     investor = accounts[1]
     bundleOwner = accounts[2]
     user = accounts[3]
 
-    
 
-    const MockDaiArtifacts = await ethers.getContractFactory("MockDai");
+
+    const MockDaiArtifacts = await ethers.getContractFactory("MockDai")
     mockDaiInstance = await MockDaiArtifacts.deploy(
       tokenSettings.dai.name,
       tokenSettings.dai.symbol,
-      tokenSettings.dai.decimals,);
+      tokenSettings.dai.decimals)
 
-    const boosterStreamArtifacts = await ethers.getContractFactory("BoosterStream");
-    boosterStreamInstance = await boosterStreamArtifacts.deploy();
+    const boosterStreamArtifacts = await ethers.getContractFactory("SableBoosterStream")
+    boosterStreamInstance = await boosterStreamArtifacts.deploy()
   })
 
   it("Deploys booster correctly")
@@ -46,4 +46,4 @@ describe("Greeter", () => {
 
   //   expect(await greeter.greet()).to.equal("Hola, mundo!");
   // });
-});
+})

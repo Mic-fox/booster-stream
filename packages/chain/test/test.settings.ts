@@ -1,4 +1,4 @@
-import { parseUnits } from "@ethersproject/units";
+import { parseUnits } from "@ethersproject/units"
 
 export const tokenSettings = {
   dai: {
@@ -6,6 +6,6 @@ export const tokenSettings = {
     symbol: "DAI",
     decimals: 18,
     initialMint: parseUnits("1000", 18)
-  },
-};
+  }
+}
 
