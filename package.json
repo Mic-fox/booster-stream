@@ -1,14 +1,17 @@
 {
   "name": "booster-stream",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "dependencies": {
   },
   "scripts": {
     "start:app": "yarn workspace @booster-stream/app start",
     "build:app": "yarn workspace @booster-stream/app build",
-    "test:app": "yarn workspace @booster-stream/app build",
-    "test:eject": "yarn workspace @booster-stream/app eject"
+    "test:app": "yarn workspace @booster-stream/app test",
+    "test:eject": "yarn workspace @booster-stream/app eject",
+    "start:chain": "yarn workspace @booster-stream/chain start",
+    "build:chain": "yarn workspace @booster-stream/chain build",
+    "test:chain": "yarn workspace @booster-stream/chain test"
   },
   "eslintConfig": {
     "extends": [
