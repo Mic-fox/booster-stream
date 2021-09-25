@@ -2,9 +2,26 @@
   "name": "booster-stream",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-ternary": "^1.0.4",
+    "typescript": "^4.0.5",
+    "wsrun": "^5.2.4"
   },
   "scripts": {
+    "clean:dependencies": "rm -rf ./node_modules && rm -rf ./*/**/node_modules",
+    "clean:dist": "rm -rf ./*/**/dist && rm -rf ./*/**/build && rm -rf ./*/**/storybook-static",
+    "clean": "yarn clean:dependencies && yarn clean:dist",
+    "lint": "eslint 'packages/**/{src}/**/*.{js,jsx,ts,tsx}'",
+    "app:add": "yarn workspace @booster-stream/app add",
+    "app:remove": "yarn workspace @booster-stream/app remove",
+    "chain:add": "yarn workspace @booster-stream/chain add",
+    "chain:remove": "yarn workspace @booster-stream/chain remove",
     "start:app": "yarn workspace @booster-stream/app start",
     "build:app": "yarn workspace @booster-stream/app build",
     "test:app": "yarn workspace @booster-stream/app test",
@@ -12,12 +29,6 @@
     "start:chain": "yarn workspace @booster-stream/chain start",
     "build:chain": "yarn workspace @booster-stream/chain build",
     "test:chain": "yarn workspace @booster-stream/chain test"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -30,15 +41,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.15.2",
-    "@typescript-eslint/parser": "^4.15.2",
-    "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-ternary": "^1.0.4",
-    "typescript": "^4.0.5"
   },
   "engines": {
     "node": ">=12",
