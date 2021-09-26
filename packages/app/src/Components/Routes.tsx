@@ -10,11 +10,6 @@ const ROUTE_LINKS = {
 
 const SableRouter = () => {
   return <Switch>
-    <Redirect
-      exact
-      from="/"
-      to={ROUTE_LINKS.Landing}
-    />
     <Route
       exact
       path={ROUTE_LINKS.Landing}
@@ -24,6 +19,11 @@ const SableRouter = () => {
       exact
       path={ROUTE_LINKS.ManageBundles}
       component={ManageBundlesPage}
+    />
+     <Redirect
+      exact
+      from="/"
+      to={ROUTE_LINKS.Landing}
     />
   </Switch>
 }
