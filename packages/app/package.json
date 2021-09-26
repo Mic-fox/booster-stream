@@ -1,5 +1,5 @@
 {
-  "name": "@booster-stream/app",
+  "name": "@sable-bundle/app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,12 +18,13 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "clsx": "^1.1.1",
+    "dayjs": "^1.10.7",
     "moralis": "^0.0.54",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1" , 
-    "react-scripts": "3.4.3",
+    "react-dom": "^16.13.1",
     "react-moralis": "^0.2.3",
     "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
     "typescript": "~4.0.5",
     "web-vitals": "^1.0.1"
   },
