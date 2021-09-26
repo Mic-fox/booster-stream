@@ -12,6 +12,7 @@ const useStyles = makeStyles(({ spacing }) => ({
 
 const LandingPage = () => {
   const classes = useStyles()
+  console.log("fasdas")
   return (
     <article className={classes.root}> 
       <Typography variant="h1" component="h1">
