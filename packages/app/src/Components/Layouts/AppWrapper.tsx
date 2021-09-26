@@ -22,10 +22,9 @@ interface IAppWrapper {
 } 
 
 const AppWrapper = ({
-    children
+  children
 }: IAppWrapper) => {
   const classes = useStyles()
-
   return (
     <article className={classes.root}>
       <header>
