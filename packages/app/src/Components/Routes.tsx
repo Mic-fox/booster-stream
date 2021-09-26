@@ -4,8 +4,8 @@ import LandingPage from "./Pages/LandingPage";
 import ManageBundlesPage from "./Pages/ManageBundlesPage";
 
 const ROUTE_LINKS = {
-  Landing: "landing",
-  ManageBundles: "manage-bundles"
+  Landing: "/landing",
+  ManageBundles: "/manage-bundles"
 }
 
 const SableRouter = () => {

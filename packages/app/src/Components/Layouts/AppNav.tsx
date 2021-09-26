@@ -24,7 +24,7 @@ const AppNav = ({ className }: IAppNav) => {
       </nav>
       <div>
         {
-          !isAuthenticated ? (
+          !isAuthenticated && !user ? (
             <Button variant="contained" onClick={() => authenticate()}>Connect wallet</Button>
           ) : (
             <Typography>
