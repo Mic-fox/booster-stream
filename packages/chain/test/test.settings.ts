@@ -6,6 +6,9 @@ export const tokenSettings = {
     symbol: "DAI",
     decimals: 18,
     initialMint: parseUnits("1000", 18)
+  },
+  trove: {
+    uri: "https://{id}.ipfs.com"
   }
 }
 

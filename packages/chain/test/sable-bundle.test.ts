@@ -1,16 +1,20 @@
 import { Contract } from "@ethersproject/contracts"
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers"
-import { expect, assert } from "chai"
+import { MockContract, smock } from '@defi-wonderland/smock';
+import chai, { expect, assert } from "chai"
 import { ethers } from "hardhat"
 import { tokenSettings } from "./test.settings"
 
-describe("Greeter", () => {
+chai.should(); // if you like should syntax
+chai.use(smock.matchers);
+
+describe("SableTrove", () => {
   let investor: SignerWithAddress
   let bundleOwner: SignerWithAddress
   let user: SignerWithAddress
 
-  let boosterStreamInstance: Contract
-  let mockDaiInstance: Contract
+  let sableTroveInstance: Contract
+  let mockDaiInstance: MockContract<Contract>
 
   beforeEach(async () => {
     const accounts = await ethers.getSigners()
@@ -18,19 +22,21 @@ describe("Greeter", () => {
     bundleOwner = accounts[2]
     user = accounts[3]
 
-
-
-    const MockDaiArtifacts = await ethers.getContractFactory("MockDai")
-    mockDaiInstance = await MockDaiArtifacts.deploy(
+    const MockDaiFactory = await smock.mock('MockDai');
+    mockDaiInstance = await MockDaiFactory.deploy(
       tokenSettings.dai.name,
-      tokenSettings.dai.symbol,
-      tokenSettings.dai.decimals)
+      tokenSettings.dai.symbol
+    )
 
-    const boosterStreamArtifacts = await ethers.getContractFactory("SableBoosterStream")
-    boosterStreamInstance = await boosterStreamArtifacts.deploy()
+    const sableTroveArtifacts = await ethers.getContractFactory("SableTrove")
+    sableTroveInstance = await sableTroveArtifacts.deploy(
+      tokenSettings.trove.uri
+    )
   })
 
-  it("Deploys booster correctly")
+  it("Deploys Trove correctly", async () => {
+    assert.exists(sableTroveInstance.address, "Contract not deployed")
+  })
 
   // it("Should return the new greeting once it's changed", async function () {
   //   const Greeter = await ethers.getContractFactory("BoosterStream");
