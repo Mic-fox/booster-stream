@@ -1,12 +1,14 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom"
 import LandingPage from "./Pages/LandingPage";
+import ManageBundlesPage from "./Pages/ManageBundlesPage";
 
 const ROUTE_LINKS = {
-    Landing: "landing"
+  Landing: "/landing",
+  ManageBundles: "/manage-bundles"
 }
 
-const StreamRouter = () => {
+const SableRouter = () => {
   return <Switch>
     <Redirect
       exact
@@ -18,7 +20,12 @@ const StreamRouter = () => {
       path={ROUTE_LINKS.Landing}
       component={LandingPage}
     />
+    <Route
+      exact
+      path={ROUTE_LINKS.ManageBundles}
+      component={ManageBundlesPage}
+    />
   </Switch>
 }
 
-export default StreamRouter
+export default SableRouter

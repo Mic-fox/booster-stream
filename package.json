@@ -1,11 +1,9 @@
 {
-  "name": "booster-stream",
+  "name": "sable-bundle",
   "version": "0.1.0",
   "private": true,
   "dependencies": {},
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.15.2",
-    "@typescript-eslint/parser": "^4.15.2",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
@@ -18,17 +16,17 @@
     "clean:dist": "rm -rf ./*/**/dist && rm -rf ./*/**/build && rm -rf ./*/**/storybook-static",
     "clean": "yarn clean:dependencies && yarn clean:dist",
     "lint": "eslint 'packages/**/{src}/**/*.{js,jsx,ts,tsx}'",
-    "app:add": "yarn workspace @booster-stream/app add",
-    "app:remove": "yarn workspace @booster-stream/app remove",
-    "chain:add": "yarn workspace @booster-stream/chain add",
-    "chain:remove": "yarn workspace @booster-stream/chain remove",
-    "start:app": "yarn workspace @booster-stream/app start",
-    "build:app": "yarn workspace @booster-stream/app build",
-    "test:app": "yarn workspace @booster-stream/app test",
-    "test:eject": "yarn workspace @booster-stream/app eject",
-    "start:chain": "yarn workspace @booster-stream/chain start",
-    "build:chain": "yarn workspace @booster-stream/chain build",
-    "test:chain": "yarn workspace @booster-stream/chain test"
+    "add:app": "yarn workspace @sable-bundle/app add",
+    "remove:app": "yarn workspace @sable-bundle/app remove",
+    "add:chain": "yarn workspace @sable-bundle/chain add",
+    "remove:chain": "yarn workspace @sable-bundle/chain remove",
+    "start:app": "yarn workspace @sable-bundle/app start",
+    "build:app": "yarn workspace @sable-bundle/app build",
+    "test:app": "yarn workspace @sable-bundle/app test",
+    "test:eject": "yarn workspace @sable-bundle/app eject",
+    "start:chain": "yarn workspace @sable-bundle/chain start",
+    "build:chain": "yarn workspace @sable-bundle/chain build",
+    "test:chain": "yarn workspace @sable-bundle/chain test"
   },
   "browserslist": {
     "production": [
