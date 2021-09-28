@@ -9,13 +9,12 @@ import { mintForAccounts } from "./mock-dai.test"
 chai.should() // if you like should syntax
 chai.use(smock.matchers)
 
-describe("SableManager", () => {
+describe("SableTrove", () => {
   let investor: SignerWithAddress
   let bundleOwner: SignerWithAddress
   let user: SignerWithAddress
 
   let sableTroveInstance: Contract
-  let sableManagerInstance: Contract
   let mockDaiInstance: MockContract<Contract>
 
   beforeEach(async () => {
@@ -40,17 +39,9 @@ describe("SableManager", () => {
     sableTroveInstance = await sableTroveArtifacts.deploy(
       tokenSettings.trove.uri
     )
-
-    const sableManagerArtifacts = await ethers.getContractFactory("SableManager")
-    sableManagerInstance = await sableManagerArtifacts.deploy()
   })
 
   it("Deploys Trove correctly", async () => {
     assert.exists(sableTroveInstance.address, "Contract not deployed")
-  })
-
-
-  it("Deploys Manager correctly", async () => {
-    assert.exists(sableManagerInstance.address, "Contract not deployed")
   })
 })
