@@ -10,7 +10,7 @@ chai.should() // if you like should syntax
 chai.use(smock.matchers)
 
 describe("SableTrove", () => {
-  let investor: SignerWithAddress
+  let minter: SignerWithAddress
   let bundleOwner: SignerWithAddress
   let user: SignerWithAddress
 
@@ -19,7 +19,7 @@ describe("SableTrove", () => {
 
   beforeEach(async () => {
     const accounts = await ethers.getSigners()
-    investor = accounts[1]
+    minter = accounts[1]
     bundleOwner = accounts[2]
     user = accounts[3]
 
@@ -30,7 +30,7 @@ describe("SableTrove", () => {
     )
 
     await mintForAccounts(mockDaiInstance, [
-      investor,
+      minter,
       bundleOwner,
       user
     ])
@@ -41,7 +41,31 @@ describe("SableTrove", () => {
     )
   })
 
-  it("Deploys Trove correctly", async () => {
-    assert.exists(sableTroveInstance.address, "Contract not deployed")
+  describe("Initialised tests", () => {
+    it("Deploys Trove correctly", async () => {
+      assert.exists(sableTroveInstance.address, "Contract not deployed")
+    })
+  })
+
+  describe("ERC1155 functionality", () => {
+    describe("View functions", () => {
+      it("balanceOf")
+      it("balanceOfBatch")
+      it("isApprovedForAll")
+    })
+
+    describe("Events", () => {
+      it("Emits TransferSingle")
+      it("Emits TransferBatch")
+      it("Emits ApprovalForAll")
+      it("Emits URI")
+    })
+  })
+
+  describe("ERC1155PresetMinterPauser", () => {
+    it("sets deployer as admin & minter")
+    it("sets deployer deployer can set minter account as minter")
+
+    it("should allow minter account to batch mint new tokens to themselves")
   })
 })
