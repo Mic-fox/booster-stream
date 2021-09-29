@@ -1,10 +1,10 @@
 import { Button, makeStyles, Typography } from '@material-ui/core';
-import React from 'react';
+import React, { useMemo } from 'react';
 import clsx from "clsx"
-import { ISableAsset } from '../../Contexts/SableBundleContext';
+import { ISableAsset, SableAssetID, useSableBundleContext } from '../../Contexts/SableBundleContext';
 
 export interface IAssetCard {
-  asset: ISableAsset
+  asset: ISableAsset | SableAssetID
   onClaim?: () => void
 }
 
@@ -21,6 +21,16 @@ const useStyles = makeStyles(({ spacing }) => ({
 
 const AssetCard = ({ asset, onClaim }: IAssetCard) => {
   const classes = useStyles()
+  const { assets } = useSableBundleContext()
+
+  const target = useMemo(() => {
+    if ((asset as ISableAsset).id) {
+      return asset
+    } else {
+      return assets.find(fetchedAsset )
+    }
+  }, [asset])
+
   return (
     <article className={classes.root}>
       <section>

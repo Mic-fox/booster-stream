@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useMoralis } from "react-moralis"
 
-type SableAssetID = string
+export type SableAssetID = string
 
 export interface ISableAsset {
   id: SableAssetID
@@ -14,11 +14,12 @@ export interface ISableBundle {
   id: string
   name: string
   publisher: string // Content creator address
-  assets: SableAssetID | ISableAsset[]
+  assets: SableAssetID[] | ISableAsset[]
   releaseData: Date
 }
 
 export type SableBundleContext = {
+  assets: ISableAsset[]
   bundles: ISableBundle[]
 }
 
@@ -106,6 +107,7 @@ const SableBundleProvider = ({ children }: SableBundleProviderProps) => {
   return (
     <SableBundleContext.Provider
       value={{
+        assets,
         bundles, // Since the key of this object is the same name & type as the value I'm giving it, you can skip writing bundles: bundles
       }}
     >
