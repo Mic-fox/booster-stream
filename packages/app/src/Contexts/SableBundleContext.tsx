@@ -28,9 +28,57 @@ const SableBundleContext = React.createContext<
 SableBundleContext | undefined
 >(undefined)
 
+const mockAssets: ISableAsset[] = [
+  {
+    id: "0x1",
+    name: "Dimmer switch simulator 2022",
+    state: "default",
+    image: "https://veti.co.za/wp-content/uploads/2018/12/V4014RSBGM-WEB.jpg"
+  },
+  {
+    id: "0x2",
+    name: "three-cats",
+    state: "default",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/White_Bear_Black_Mirror.png/170px-White_Bear_Black_Mirror.png"
+  },
+  {
+    id: "0x3",
+    name: "Way of the Hoof-Cleaner",
+    state: "available",
+    image: "https://thumbs.dreamstime.com/b/horseshoe-eps-vector-image-illustration-beautiful-designed-horse-shoe-clipart-silhouette-cricut-design-space-223152921.jpg"
+  },
+  {
+    id: "0x4",
+    name: "Hammers vs Mallets 5: Stopping time",
+    state: "claimed",
+    image: "https://d4c5gb8slvq7w.cloudfront.net/eyJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjcwMCwiaGVpZ2h0IjozOTR9fSwiYnVja2V0IjoiZmluZXdvb2R3b3JraW5nLnMzLnRhdW50b25jbG91ZC5jb20iLCJrZXkiOiJhcHBcL3VwbG9hZHNcLzIwMjBcLzA0XC8wMzEzNDk1MFwvYmVuLXN0cmFub3MtbWFsbGV0cy1hbmQtaGFtbWVycy5qcGcifQ=="
+  },
+  {
+    id: "0x5",
+    name: "A Wrench named Baxter",
+    state: "unavailable",
+    image: "https://www.forcetools.co.za/wp-content/uploads/2018/10/68408-web.jpg"
+  },
+  {
+    id: "0x6",
+    name: "Pong 3D: An interactive novel",
+    state: "unavailable",
+    image: "https://www.thexboxhub.com/wp-content/uploads/2019/11/image.png"
+  },
+  
+]
+
 const SableBundleProvider = ({ children }: SableBundleProviderProps) => {
   const { isAuthenticated } = useMoralis()
-  const [bundles, setBundles] = useState<ISableBundle[]>([])
+  const [bundles, setBundles] = useState<ISableBundle[]>([
+    {
+      id: "0x1",
+      name: "Greatest games ever Vol.4",
+      publisher: "0xC0FFEEC0FFEEC0FFEEC0FFEEC0FFEEC0FFEEC0FF",
+      releaseData: new Date(),
+      assets: mockAssets
+    }
+  ])
 
   // TODO get bundles on load
 
