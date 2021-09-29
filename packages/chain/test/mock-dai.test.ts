@@ -44,6 +44,7 @@ describe("MockDai", () => {
   it("Sets mocks balance correctly", async () => {
     let balance: BigNumber[] = await mockDaiInstance.functions.balanceOf(user.address)
     assert.isTrue(balance[0].eq(0))
+    
     await mockDaiInstance.setVariable("_balances", { [user.address]: 1234 })
     balance = await mockDaiInstance.functions.balanceOf(user.address)
     assert.isTrue(balance[0].eq(1234))

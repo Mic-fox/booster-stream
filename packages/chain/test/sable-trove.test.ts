@@ -5,11 +5,15 @@ import chai, { assert } from "chai"
 import { ethers } from "hardhat"
 import { tokenSettings } from "./test.settings"
 import { mintForAccounts } from "./mock-dai.test"
+import { keccak256 } from "@ethersproject/keccak256"
+import { toUtf8Bytes } from "ethers/lib/utils"
+import { BigNumber } from "@ethersproject/bignumber"
 
 chai.should() // if you like should syntax
 chai.use(smock.matchers)
 
 describe("SableTrove", () => {
+  let deployer: SignerWithAddress
   let minter: SignerWithAddress
   let bundleOwner: SignerWithAddress
   let user: SignerWithAddress
@@ -19,6 +23,7 @@ describe("SableTrove", () => {
 
   beforeEach(async () => {
     const accounts = await ethers.getSigners()
+    deployer = accounts[0]
     minter = accounts[1]
     bundleOwner = accounts[2]
     user = accounts[3]
@@ -63,8 +68,26 @@ describe("SableTrove", () => {
   })
 
   describe("ERC1155PresetMinterPauser", () => {
-    it("sets deployer as admin & minter")
-    it("sets deployer deployer can set minter account as minter")
+    it("sets deployer as admin & minter", async () => {
+      const isDeployerAdmin = await sableTroveInstance.functions.hasRole("0x0000000000000000000000000000000000000000000000000000000000000000", deployer.address)
+      assert.isTrue(isDeployerAdmin[0], "Deployer isn't admin")
+
+      const isDeployerMinter = await sableTroveInstance.functions.hasRole(keccak256(toUtf8Bytes("MINTER_ROLE")),  deployer.address)
+      assert.isTrue(isDeployerMinter[0], "Deployer isn't minter")
+
+      const isDeployerPauser = await sableTroveInstance.functions.hasRole(keccak256(toUtf8Bytes("PAUSER_ROLE")),  deployer.address)
+      assert.isTrue(isDeployerPauser[0], "Deployer isn't pauser")
+    })
+
+    it("deployer can set minter account as minter", async () => {
+      let isMinterMinter = await sableTroveInstance.functions.hasRole(keccak256(toUtf8Bytes("MINTER_ROLE")),  minter.address)
+      assert.isFalse(isMinterMinter[0], "Minter is minter")
+
+      await sableTroveInstance.functions.grantRole(keccak256(toUtf8Bytes("MINTER_ROLE")), minter.address)
+      
+      isMinterMinter = await sableTroveInstance.functions.hasRole(keccak256(toUtf8Bytes("MINTER_ROLE")),  minter.address)
+      assert.isTrue(isMinterMinter[0], "Minter isn't minter")
+    })
 
     it("should allow minter account to batch mint new tokens to themselves")
   })
