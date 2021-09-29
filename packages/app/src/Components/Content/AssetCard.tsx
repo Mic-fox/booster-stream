@@ -1,7 +1,7 @@
 import { Button, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
-import { ISableAsset } from '../Contexts/SableBundleContext';
 import clsx from "clsx"
+import { ISableAsset } from '../../Contexts/SableBundleContext';
 
 export interface IAssetCard {
   asset: ISableAsset

@@ -1,5 +1,12 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
+import { useSableBundleContext } from '../../Contexts/SableBundleContext';
+import clsx from "clsx"
+
+interface IBundleWrapper {
+  className?: string
+  bundleId: string
+}
 
 const useStyles = makeStyles(({ spacing }) => ({
   root: {
@@ -7,14 +14,20 @@ const useStyles = makeStyles(({ spacing }) => ({
   },
 }))
 
-const EntitlementCard = () => {
+const BundleWrapper = ({ bundleId, className }: IBundleWrapper) => {
   const classes = useStyles()
+  const { bundles } = useSableBundleContext()
 
   return (
-    <article className={classes.root}>
-      AppNav
-    </article>
+    <section className={clsx(classes.root, className)}>
+      BundleWrapper
+      <Typography component="p" variant="h4">
+        {
+          bundles.find(item => item.id === bundleId).name
+        }
+      </Typography>
+    </section>
   )
 }
 
-export default EntitlementCard
+export default BundleWrapper

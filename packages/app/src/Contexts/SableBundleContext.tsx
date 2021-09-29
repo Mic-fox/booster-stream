@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { useMoralis } from "react-moralis"
 
+type SableAssetID = string
+
 export interface ISableAsset {
-  id: string
+  id: SableAssetID
   name: string
   image?: string
   state: "claimed" | "available" | "unavailable" | "default"
@@ -12,7 +14,7 @@ export interface ISableBundle {
   id: string
   name: string
   publisher: string // Content creator address
-  assets: ISableAsset[]
+  assets: SableAssetID | ISableAsset[]
   releaseData: Date
 }
 
@@ -56,20 +58,33 @@ const mockAssets: ISableAsset[] = [
   {
     id: "0x5",
     name: "A Wrench named Baxter",
-    state: "unavailable",
+    state: "available",
     image: "https://www.forcetools.co.za/wp-content/uploads/2018/10/68408-web.jpg"
   },
   {
     id: "0x6",
     name: "Pong 3D: An interactive novel",
-    state: "unavailable",
+    state: "available",
     image: "https://www.thexboxhub.com/wp-content/uploads/2019/11/image.png"
   },
-  
+  {
+    id: "0x7",
+    name: "Grand Accounting: Ghosts of tulips",
+    state: "available",
+    image: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/types-of-tulips-1615235309.jpg?crop=0.670xw:1.00xh;0.327xw,0&resize=640:*"
+  },
+  {
+    id: "0x8",
+    name: "2007 Kia Sedona - Remastered",
+    state: "available",
+    image: "https://i2.cdn.turner.com/money/galleries/2011/autos/1108/gallery.kelley_blue_book_back_to_school_cars/images/2007-kia-sedona.jpg"
+  }
 ]
 
 const SableBundleProvider = ({ children }: SableBundleProviderProps) => {
   const { isAuthenticated } = useMoralis()
+
+  const [assets, setAssets] = useState<ISableAsset[]>(mockAssets)
   const [bundles, setBundles] = useState<ISableBundle[]>([
     {
       id: "0x1",
